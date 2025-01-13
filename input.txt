@@ -1,1 +1,12 @@
-1 beginj beginh procdures begin procedure + - = endr end3
+procedure aaa ; begin
+var a , b : integer ;
+h , d : integer ;
+h , g , j : integer ;
+a := 5 ;
+for a := 6 to 13 do begin 
+b := 10 + a ;
+for h := 5 to 10 do begin 
+d := 1 + b ;
+end ;
+end ;
+end

@@ -1,0 +1,54 @@
+Исходная грамматика:
+
+Procedure -> Begin Descriptions Operators End
+Begin -> procedure ProcedureName ; begin
+End -> end
+ProcedureName -> Id
+Descriptions -> var DescrList
+DescrList -> Descr | Descr DescrList
+Descr -> VarList : Type ;
+VarList -> Id | Id , VarList
+Type -> integer
+Operators -> Op | Op Operators
+Op -> Id := Expr ; | for Id := Const to Const do begin Operators end ;
+Expr -> SimpleExpr | SimpleExpr + Expr | SimpleExpr - Expr
+SimpleExpr -> Id | Const | ( Expr )
+Condition → Expr RelationOperator Expr
+RelationOperator -> = | <> | > | <
+Id -> id_name
+Const -> int_num
+
+Преобразованная(нет ветвлений правых):
+
+Procedure -> Begin Descriptions Operators End
+Begin -> procedure ProcedureName ; begin
+End -> end
+ProcedureName -> Id
+Descriptions -> var DescrList
+DescrList -> Descr DescrList'
+DescrList' -> ''
+DescrList' -> DescrList
+Descr -> VarList : Type ;
+VarList -> Id VarList'
+VarList' -> ''
+VarList' -> , VarList
+Type -> integer
+Operators -> Op Operators'
+Operators' -> ''
+Operators' -> Operators
+Op -> Id := Expr ;
+Op -> for Id := Const to Const do begin Operators end ;
+Expr -> SimpleExpr Expr' 
+Expr' -> ''
+Expr' -> + Expr
+Expr' -> - Expr
+SimpleExpr -> Id 
+SimpleExpr -> Const 
+SimpleExpr -> ( Expr )
+Condition → Expr RelationOperator Expr
+RelationOperator -> = 
+RelationOperator -> <> 
+RelationOperator -> > 
+RelationOperator -> <
+Id -> id_name
+Const -> int_num

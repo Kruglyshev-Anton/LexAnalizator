@@ -294,7 +294,7 @@ public:
 		}
 		fin.close();
 	}
-	void ScanWrite(std::string file) {
+	void ScanWrite(std::string file, std::vector<Token>& lexemsFromFile) {
 		ifstream fin;
 		ofstream fout;
 		fin.open(file);
@@ -317,28 +317,46 @@ public:
 				size_t ind = tokens.hashFunc(x.c_str());
 				if (cs == 50 || cs == 33 || cs == 44) {
 					tokens.add(x.c_str(), "COMMAND");
+					Token t;
+					t.setToken(x.c_str(), "COMMAND");
+					lexemsFromFile.push_back(t);
 					fout << x << '|' << "COMMAND|" << ind << endl;
 
 				}
 				else if (cs == 37 || cs == 47) {
 					tokens.add(x.c_str(), "TYPE");
+					Token t;
+					t.setToken(x.c_str(), "TYPE");
+					lexemsFromFile.push_back(t);
 					fout << x << '|' << "TYPE|" << ind << endl;
 				}
 				else if (cs == 36 || cs == 24 || cs == 27) {
 					tokens.add(x.c_str(), "INSTRUCTION");
+					Token t;
+					t.setToken(x.c_str(), "INSTRUCTION");
+					lexemsFromFile.push_back(t);
 					fout << x << '|' << "INSTUCLION|" << ind << endl;
 				}
 				else if (cs == 1 || cs == 9 || cs == 6 || cs == 2 || cs == 7 || cs == 4 || cs == 5 || cs == 3 || cs == 8||cs==22) {
 					tokens.add(x.c_str(), "ID_NAME");
+					Token t;
+					t.setToken(x.c_str(), "ID_NAME");
+					lexemsFromFile.push_back(t);
 					fout << x << '|' << "ID_NAME|" << ind << endl;
 				}
 				else if (cs == 10) {
 					tokens.add(x.c_str(), "NUMBER");
+					Token t;
+					t.setToken(x.c_str(), "NUMBER");
+					lexemsFromFile.push_back(t);
 					fout << x << '|' << "NUMBER|" << ind << endl;
 				}
-				else if (cs == 32 || cs == 15 || cs == 16 || cs == 21 || cs == 20 || cs == 12 || cs == 13 || cs == 17 || cs == 18 ||
+				else if (cs == 31 || cs == 15 || cs == 16 || cs == 21 || cs == 20 || cs == 12 || cs == 13 || cs == 17 || cs == 18 ||
 					cs == 19 || cs == 14) {
-					tokens.add(x.c_str(), "OPERATOR");
+					tokens.add(x.c_str(), "OPERATOR"); 
+					Token t;
+					t.setToken(x.c_str(), "OPERATOR");
+					lexemsFromFile.push_back(t);
 					fout << x << '|' << "OPERATOR|" << ind << endl;
 				}
 

@@ -131,13 +131,17 @@
     <ClCompile Include="HashTable.cpp" />
     <ClCompile Include="LexAnalizator.cpp" />
     <ClCompile Include="nfa.cpp" />
+    <ClCompile Include="Node.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="SyntaxAnalizator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dfa.h" />
     <ClInclude Include="HashTable.h" />
     <ClInclude Include="LexAnalizator.h" />
     <ClInclude Include="nfa.h" />
+    <ClInclude Include="Node.h" />
+    <ClInclude Include="SyntaxAnalizator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

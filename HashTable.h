@@ -16,8 +16,8 @@ struct Token {
 		
 	}
 	~Token() {
-		delete[] lex;
-		delete[] type;
+	/*	delete[] lex;
+		delete[] type;*/
 	}
 	Token& setLex(const char* newLex) {
 		delete[] lex;
